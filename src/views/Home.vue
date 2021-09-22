@@ -20,7 +20,7 @@
 
       <v-card-actions>
         <v-btn class="shop-button" block text>
-          Shop Now
+          {{ title }}
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -37,6 +37,7 @@ export default {
   name: "Home",
   data() {
     return {
+      title: this.$store.state.app.title,
       items: [
         {
           src: Product1,

@@ -62,24 +62,21 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   data() {
     return {
-      selectedTab: "Shirts",
-      categories: [
-        { value: "Shirts", color: "#90090" },
-        { value: "Bottom", color: "#12312" },
-        { value: "Foot Wear", color: "#272727" },
-        { value: "Watches", color: "#42321" },
-        { value: "UnStitched Clothes", color: "#64122" },
-        { value: "Accesories", color: "#90242" },
-      ],
+      categories: this.$store.state.app.categories,
     };
+  },
+  computed: {
+    ...mapGetters(["selectedTab"]),
   },
 
   methods: {
     tabChange(param) {
-      this.selectedTab = param.value;
+      this.$store.dispatch("app/handleTabChange", param.value);
     },
   },
 };
